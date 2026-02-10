@@ -97,3 +97,36 @@
       border-radius: var(--invasion-radius);
       font-family: var(--invasion-mono);
       font-size: 0.85rem;
+    }
+
+    .invasion-metric {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .invasion-metric-name { color: var(--invasion-dim); }
+    .invasion-metric-num { color: var(--invasion-pulse); }
+    .invasion-metric-num.low { color: var(--invasion-warn); }
+    .invasion-metric-num.critical { color: var(--invasion-hostile); }
+
+    .invasion-actions {
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .invasion-btn {
+      font-family: var(--invasion-font);
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 0.55rem 1.25rem;
+      border: 1px solid var(--invasion-accent);
+      border-radius: var(--invasion-radius);
+      background: rgba(126, 232, 185, 0.1);
+      color: var(--invasion-accent);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.12s;
+    }
+
+    .invasion-btn:hover {
+      background: rgba(126, 232, 185, 0.2);

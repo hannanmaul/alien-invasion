@@ -130,3 +130,36 @@
 
     .invasion-btn:hover {
       background: rgba(126, 232, 185, 0.2);
+      transform: scale(1.02);
+    }
+
+    .invasion-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 13, 18, 0.9);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.9rem;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+    }
+
+    .invasion-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .invasion-overlay h2 {
+      font-size: 1.4rem;
+      color: var(--invasion-accent);
+    }
+
+    .invasion-overlay p {
+      color: var(--invasion-dim);
+      font-size: 0.9rem;
+    }
+

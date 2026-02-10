@@ -295,3 +295,36 @@
         ctx.beginPath();
         ctx.moveTo(x, TURRET_Y + TURRET_H);
         ctx.lineTo(x - TURRET_W / 2, TURRET_Y + TURRET_H);
+        ctx.lineTo(x - 10, TURRET_Y);
+        ctx.lineTo(x, TURRET_Y - 4);
+        ctx.lineTo(x + 10, TURRET_Y);
+        ctx.closePath();
+        ctx.fill();
+        ctx.strokeStyle = '#7ee8b9';
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+      }
+
+      function drawBullets() {
+        ctx.fillStyle = '#7ee8b9';
+        bullets.forEach(function (b) {
+          ctx.fillRect(b.x - 2, b.y, 4, 12);
+        });
+      }
+
+      function drawAliens() {
+        aliens.forEach(function (a) {
+          ctx.fillStyle = '#f87171';
+          ctx.fillRect(a.x - a.w / 2, a.y - a.h / 2, a.w, a.h);
+          ctx.strokeStyle = '#fbbf24';
+          ctx.lineWidth = 1;
+          ctx.strokeRect(a.x - a.w / 2, a.y - a.h / 2, a.w, a.h);
+        });
+      }
+
+      function hitTest(b, a) {
+        return b.x >= a.x - a.w / 2 && b.x <= a.x + a.w / 2 &&
+               b.y >= a.y - a.h / 2 && b.y <= a.y + a.h / 2;
+      }
+
+      function gameLoop() {

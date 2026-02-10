@@ -328,3 +328,36 @@
       }
 
       function gameLoop() {
+        if (!running) return;
+
+        const mx = Math.max(TURRET_W / 2, Math.min(W - TURRET_W / 2, turretX + TURRET_W / 2));
+        turretX = mx - TURRET_W / 2;
+
+        bullets = bullets.filter(function (b) {
+          b.y += BULLET_SPEED;
+          if (b.y < -10) return false;
+          for (let i = aliens.length - 1; i >= 0; i--) {
+            if (hitTest(b, aliens[i])) {
+              score += aliens[i].points;
+              aliens.splice(i, 1);
+              return false;
+            }
+          }
+          return true;
+        });
+
+        alienTick++;
+        if (alienTick >= Math.max(20 - wave * 2, 8)) {
+          alienTick = 0;
+          let moveDown = false;
+          aliens.forEach(function (a) {
+            a.x += alienDir * 6;
+            if (a.x - a.w / 2 <= 0 || a.x + a.w / 2 >= W) moveDown = true;
+            a.y += moveDown ? ALIEN_DROP : 0;
+          });
+          if (moveDown) {
+            alienDir *= -1;
+            aliens.forEach(function (a) { a.y += ALIEN_DROP; });
+          }
+        }
+

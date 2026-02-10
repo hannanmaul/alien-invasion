@@ -31,3 +31,36 @@
       background: var(--invasion-bg);
       color: var(--invasion-text);
       min-height: 100vh;
+      overflow: hidden;
+      background-image:
+        radial-gradient(ellipse 100% 60% at 50% 0%, rgba(126, 232, 185, 0.07), transparent),
+        radial-gradient(ellipse 80% 50% at 80% 80%, rgba(248, 113, 113, 0.05), transparent);
+    }
+
+    .invasion-wrap {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 1.25rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .invasion-head {
+      text-align: center;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--invasion-edge);
+    }
+
+    .invasion-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--invasion-accent);
+      letter-spacing: 0.06em;
+    }
+
+    .invasion-sub {
+      font-size: 0.7rem;
+      color: var(--invasion-dim);
+      margin-top: 0.2rem;

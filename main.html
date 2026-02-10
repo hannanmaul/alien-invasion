@@ -229,3 +229,36 @@
       const TURRET_H = 28;
       const BULLET_SPEED = -9;
       const ALIEN_ROWS = 3;
+      const ALIEN_COLS = 8;
+      const ALIEN_W = 36;
+      const ALIEN_H = 24;
+      const ALIEN_DROP = 18;
+      const BASE_LIVES = 3;
+      const WAVE_BONUS = 200;
+
+      let animId = 0;
+      let running = false;
+      let turretX = W / 2 - TURRET_W / 2;
+      let bullets = [];
+      let aliens = [];
+      let wave = 1;
+      let score = 0;
+      let lives = BASE_LIVES;
+      let alienDir = 1;
+      let alienTick = 0;
+      let lastSpawn = 0;
+
+      function resize() {
+        const arena = canvas.parentElement;
+        const r = Math.min(arena.clientWidth / W, arena.clientHeight / H, 1);
+        canvas.style.width = (W * r) + 'px';
+        canvas.style.height = (H * r) + 'px';
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      function spawnWave() {
+        aliens = [];
+        const startX = (W - ALIEN_COLS * (ALIEN_W + 8)) / 2 + ALIEN_W / 2;
+        const startY = 50;
+        for (let row = 0; row < ALIEN_ROWS; row++) {

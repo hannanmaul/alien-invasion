@@ -361,3 +361,36 @@
           }
         }
 
+        aliens = aliens.filter(function (a) {
+          if (a.y + a.h / 2 >= TURRET_Y) {
+            lives--;
+            if (lives <= 0) {
+              running = false;
+              endTitle.textContent = 'Base Overrun';
+              endMsg.textContent = 'Final score: ' + score;
+              endOverlay.classList.add('show');
+            }
+            return false;
+          }
+          return true;
+        });
+
+        if (aliens.length === 0) {
+          wave++;
+          score += WAVE_BONUS * wave;
+          spawnWave();
+        }
+
+        drawBg();
+        drawTurret();
+        drawBullets();
+        drawAliens();
+
+        waveEl.textContent = wave;
+        scoreEl.textContent = score;
+        livesEl.textContent = lives;
+        livesEl.className = 'invasion-metric-num' + (lives <= 1 ? ' critical' : lives === 2 ? ' low' : '');
+
+        animId = requestAnimationFrame(gameLoop);
+      }
+

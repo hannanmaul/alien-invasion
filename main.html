@@ -394,3 +394,36 @@
         animId = requestAnimationFrame(gameLoop);
       }
 
+      function reset() {
+        turretX = W / 2 - TURRET_W / 2;
+        bullets = [];
+        wave = 1;
+        score = 0;
+        lives = BASE_LIVES;
+        spawnWave();
+      }
+
+      startBtn.addEventListener('click', function () {
+        startOverlay.classList.remove('show');
+        reset();
+        running = true;
+        gameLoop();
+      });
+
+      restartBtn.addEventListener('click', function () {
+        endOverlay.classList.remove('show');
+        reset();
+        running = true;
+        gameLoop();
+      });
+
+      function canvasCoords(e) {
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+        return { x: (e.clientX - rect.left) * scaleX, y: (e.clientY - rect.top) * scaleY };
+      }
+
+      canvas.addEventListener('mousemove', function (e) {
+        if (!running) return;
+        const p = canvasCoords(e);

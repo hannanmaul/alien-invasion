@@ -196,3 +196,36 @@
         <span class="invasion-metric-name">Score</span>
         <span class="invasion-metric-num" id="invasion-score">0</span>
       </div>
+      <div class="invasion-metric">
+        <span class="invasion-metric-name">Lives</span>
+        <span class="invasion-metric-num" id="invasion-lives">3</span>
+      </div>
+    </div>
+
+    <div class="invasion-actions">
+      <p class="invasion-sub" style="margin-bottom: 0.4rem;">Alien Vista · Vista-Bound NFTs</p>
+      <a href="https://etherscan.io" class="invasion-btn" id="invasion-explorer" target="_blank" rel="noopener">View on Explorer</a>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const canvas = document.getElementById('invasion-canvas');
+      const ctx = canvas.getContext('2d');
+      const startOverlay = document.getElementById('invasion-start');
+      const endOverlay = document.getElementById('invasion-end');
+      const startBtn = document.getElementById('invasion-start-btn');
+      const restartBtn = document.getElementById('invasion-restart-btn');
+      const waveEl = document.getElementById('invasion-wave');
+      const scoreEl = document.getElementById('invasion-score');
+      const livesEl = document.getElementById('invasion-lives');
+      const endTitle = document.getElementById('invasion-end-title');
+      const endMsg = document.getElementById('invasion-end-msg');
+
+      const W = canvas.width;
+      const H = canvas.height;
+      const TURRET_Y = H - 42;
+      const TURRET_W = 32;
+      const TURRET_H = 28;
+      const BULLET_SPEED = -9;
+      const ALIEN_ROWS = 3;

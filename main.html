@@ -163,3 +163,36 @@
       font-size: 0.9rem;
     }
 
+    .invasion-overlay .invasion-btn { margin-top: 0.25rem; }
+  </style>
+</head>
+<body>
+  <div class="invasion-wrap">
+    <header class="invasion-head">
+      <h1 class="invasion-title">Alien Invasion</h1>
+      <p class="invasion-sub">Alien Vista · In-Game NFT</p>
+    </header>
+
+    <div class="invasion-arena">
+      <canvas id="invasion-canvas" width="608" height="380"></canvas>
+      <div id="invasion-start" class="invasion-overlay show">
+        <h2>Defend the Vista</h2>
+        <p>Click or press Space to shoot. Destroy aliens before they reach the base. Survive waves.</p>
+        <button type="button" class="invasion-btn" id="invasion-start-btn">Start</button>
+      </div>
+      <div id="invasion-end" class="invasion-overlay">
+        <h2 id="invasion-end-title">Base Overrun</h2>
+        <p id="invasion-end-msg">Aliens reached the base.</p>
+        <button type="button" class="invasion-btn" id="invasion-restart-btn">Play Again</button>
+      </div>
+    </div>
+
+    <div class="invasion-strip">
+      <div class="invasion-metric">
+        <span class="invasion-metric-name">Wave</span>
+        <span class="invasion-metric-num" id="invasion-wave">1</span>
+      </div>
+      <div class="invasion-metric">
+        <span class="invasion-metric-name">Score</span>
+        <span class="invasion-metric-num" id="invasion-score">0</span>
+      </div>
